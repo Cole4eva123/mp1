@@ -2,12 +2,684 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Pingyang County, Wenzhou: 1,042 square kilometres of southern Zhejiang, from the Aojiang tidal river to the fifty-two islands of the Nanji Archipelago."
+        />
+        <meta name="theme-color" content="#0b2a31" />
+        <title>Pingyang County, Zhejiang</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
     </head>
     <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
+        <a class="skip" href="#overview">Skip to content</a>
+
+        <header class="nav" id="nav">
+            <div class="nav__inner">
+                <a class="nav__brand" href="#home">
+                    <span class="nav__mark" aria-hidden="true">
+                        <i class="fa-solid fa-water"></i>
+                    </span>
+                    <span class="nav__word">Pingyang</span>
+                </a>
+                <nav class="nav__menu" aria-label="Section navigation">
+                    <ul class="nav__list">
+                        <li><a class="nav__link" href="#overview">Overview</a></li>
+                        <li><a class="nav__link" href="#nanji">Nanji</a></li>
+                        <li><a class="nav__link" href="#inland">Inland</a></li>
+                        <li><a class="nav__link" href="#heritage">Heritage</a></li>
+                        <li><a class="nav__link" href="#bore">The Bore</a></li>
+                        <li><a class="nav__link" href="#visit">Visit</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- ============ HERO ============ -->
+            <section class="stripe hero" id="home">
+                <div class="hero__scrim"></div>
+                <div class="hero__body">
+                    <p class="eyebrow hero__eyebrow">27.67&deg;&nbsp;N &middot; 120.57&deg;&nbsp;E &mdash; Wenzhou, Zhejiang</p>
+                    <h1 class="hero__title">Pingyang</h1>
+                    <p class="hero__lede">
+                        A county of 1,042&nbsp;square kilometres that runs from the tidal reach of
+                        the Aojiang out to fifty-two islands in the East China Sea. Settled since
+                        the Neolithic, a county since 283&nbsp;CE, under this name since 914.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--solid" href="#overview">Read the County</a>
+                        <a class="btn btn--ghost" href="#nanji">See Nanji</a>
+                    </div>
+                </div>
+                <a class="hero__cue" href="#overview" aria-label="Scroll to the overview">
+                    <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                </a>
+            </section>
+
+            <!-- ============ OVERVIEW ============ -->
+            <section class="stripe stripe--foam" id="overview">
+                <div class="wrap">
+                    <p class="eyebrow">At a Glance</p>
+                    <h2 class="section__title">A County on the Edge of the East China Sea</h2>
+                    <p class="section__lede">
+                        Pingyang sits on the southern coast of Zhejiang, inside the prefecture of
+                        Wenzhou. Cangnan lies to the south, Wencheng and Taishun to the west,
+                        Rui&rsquo;an to the north, and the open sea to the east. The county
+                        government sits at Kunyang; the river port of Aojiang, ten minutes away,
+                        carries its shipping.
+                    </p>
+
+                    <ul class="stats">
+                        <li class="stat">
+                            <span class="stat__num">1,042</span>
+                            <span class="stat__unit">km&sup2; of land</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat__num">283</span>
+                            <span class="stat__unit">CE, first county seat</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat__num">52</span>
+                            <span class="stat__unit">islands over 500&nbsp;m&sup2;</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat__num">1,876</span>
+                            <span class="stat__unit">marine species recorded</span>
+                        </li>
+                    </ul>
+
+                    <div class="cols">
+                        <article class="col">
+                            <h3 class="col__title">The Name</h3>
+                            <p>
+                                The county began in 283&nbsp;CE as Shiyang and was renamed Hengyang
+                                soon after. In 914 the Wuyue king Qian&nbsp;Liu put down the
+                                Hengyang revolt and renamed the place for the outcome &mdash;
+                                <em lang="zh">heng yang ji ping</em>, &ldquo;Hengyang pacified.&rdquo;
+                                The name has stood for more than 1,100&nbsp;years.
+                            </p>
+                        </article>
+                        <article class="col">
+                            <h3 class="col__title">The Shipyard</h3>
+                            <p>
+                                In 239&nbsp;CE the kingdom of Eastern Wu built the Hengyu boat
+                                garrison here, one of its three shipbuilding bases: a war-fleet yard
+                                and a naval training ground in one, staffed partly with exiles sent
+                                down from the capital.
+                            </p>
+                        </article>
+                        <article class="col">
+                            <h3 class="col__title">The Schools</h3>
+                            <p>
+                                The county opened a school the year it was founded &mdash; the first
+                                local government school in Zhejiang. It produced 706 imperial
+                                graduates, and in the Southern Song, fifteen top graduates of the
+                                military examinations, which earned it the label
+                                &ldquo;hometown of military champions.&rdquo;
+                            </p>
+                        </article>
+                    </div>
+
+                    <figure class="figure figure--map">
+                        <img
+                            src="assets/pingyang-map-1946.jpg"
+                            alt="Printed county map of Pingyang issued in November 1946, showing townships, rivers and the coastline."
+                            width="1080"
+                            height="1480"
+                            loading="lazy"
+                        />
+                        <figcaption>
+                            County map drawn by the Pingyang county construction office,
+                            November&nbsp;1946. Public domain.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- ============ NANJI ============ -->
+            <section class="stripe stripe--ink" id="nanji">
+                <div class="wrap">
+                    <p class="eyebrow">30 Nautical Miles Offshore</p>
+                    <h2 class="section__title">The Nanji Archipelago</h2>
+
+                    <div class="split">
+                        <div class="split__media">
+                            <div
+                                class="carousel"
+                                id="carousel"
+                                role="group"
+                                aria-roledescription="carousel"
+                                aria-label="Photographs of the Nanji Archipelago"
+                            >
+                                <div class="carousel__viewport">
+                                    <ul class="carousel__track" id="carousel-track">
+                                        <li class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+                                            <img
+                                                src="assets/nanji-dashaao.jpg"
+                                                alt="Aerial view of Dasha&rsquo;ao, a curved sand bay on the south side of Nanji Island, with green headlands on either side."
+                                                width="1920"
+                                                height="1280"
+                                            />
+                                            <p class="carousel__caption">
+                                                Dasha&rsquo;ao, the island&rsquo;s south-facing bay,
+                                                from the north
+                                            </p>
+                                        </li>
+                                        <li class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+                                            <img
+                                                src="assets/pearl-beach.jpg"
+                                                alt="Wide panorama of Pearl Beach in the Nanji national marine reserve, sand meeting shallow water below a low ridge."
+                                                width="1920"
+                                                height="960"
+                                                loading="lazy"
+                                            />
+                                            <p class="carousel__caption">
+                                                Pearl Beach, inside the national marine reserve
+                                            </p>
+                                        </li>
+                                        <li class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+                                            <img
+                                                src="assets/nanji-meiling.jpg"
+                                                alt="Mei-ling House at Dongfang village on Nanji Island, a low stone-and-render building seen from the south."
+                                                width="1280"
+                                                height="853"
+                                                loading="lazy"
+                                            />
+                                            <p class="carousel__caption">
+                                                Mei-ling House, Dongfang village, Nanji town
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <button class="carousel__arrow carousel__arrow--prev" type="button" id="carousel-prev" aria-label="Previous slide">
+                                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                                </button>
+                                <button class="carousel__arrow carousel__arrow--next" type="button" id="carousel-next" aria-label="Next slide">
+                                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                                </button>
+
+                                <div class="carousel__dots" id="carousel-dots"></div>
+                                <p class="carousel__status" id="carousel-status" aria-live="polite"></p>
+                            </div>
+                        </div>
+
+                        <div class="split__text">
+                            <p>
+                                Fifty-two islands larger than 500&nbsp;square metres, plus 55 exposed
+                                rocks and 14 submerged ones, sit 30&nbsp;nautical miles off the mouth
+                                of the Aojiang. The land adds up to 11.13&nbsp;km&sup2;; the water
+                                around it, 201.6&nbsp;km&sup2;. Nanji Island itself covers
+                                7.64&nbsp;km&sup2; and rises to 229.1&nbsp;metres at Dashan. One
+                                islet in the group, Daotiao&nbsp;Shan, is a base point of China&rsquo;s
+                                territorial sea &mdash; the only one in Wenzhou.
+                            </p>
+                            <p>
+                                The State Council made the archipelago a national marine nature
+                                reserve in September&nbsp;1990, one of the first five in the country,
+                                and UNESCO added it to the World Network of Biosphere Reserves in
+                                December&nbsp;1998. Surveys have logged 1,876&nbsp;marine species
+                                here, which is why it is called the Kingdom of Shells and Algae.
+                            </p>
+                            <dl class="spec">
+                                <div class="spec__row">
+                                    <dt>Molluscs</dt>
+                                    <dd>427 species &mdash; 36 found nowhere else on China&rsquo;s coast</dd>
+                                </div>
+                                <div class="spec__row">
+                                    <dt>Algae</dt>
+                                    <dd>178 large benthic, 459 micro &mdash; a quarter of China&rsquo;s total</dd>
+                                </div>
+                                <div class="spec__row">
+                                    <dt>Fish &amp; crustaceans</dt>
+                                    <dd>397 and 257 species</dd>
+                                </div>
+                                <div class="spec__row">
+                                    <dt>Birds</dt>
+                                    <dd>40 species; black-tailed gulls arrive late April</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ INLAND ============ -->
+            <section class="stripe" id="inland">
+                <div class="parallax">
+                    <div class="parallax__scrim"></div>
+                    <div class="parallax__panel">
+                        <p class="eyebrow">North Harbour &mdash; Upstream of Aojiang</p>
+                        <h2 class="section__title section__title--light">The Inland Half</h2>
+                        <p class="parallax__text">
+                            Above the tideline the county turns to hills. Shuitou, the second
+                            economic centre, is the eastern gate of the Nanyandang national scenic
+                            area; Shunxi and Shanmen sit further up the valleys, and Qingjie is a
+                            She ethnic township. Two upper branches of the Aojiang &mdash; the
+                            Shuitou and the Tengjiao &mdash; meet here in a fork the old verses
+                            compare to a tree.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="wrap wrap--tight">
+                    <div class="cols cols--gallery">
+                        <figure class="figure">
+                            <img
+                                src="assets/shanmen-memorial.jpg"
+                                alt="Memorial park of the Red Army Advance Division at Shanmen, a stone plaza backed by wooded hills."
+                                width="1280"
+                                height="853"
+                                loading="lazy"
+                            />
+                            <figcaption>
+                                Shanmen: the Red Army Advance Division memorial park, where the
+                                county keeps its 1930s history.
+                            </figcaption>
+                        </figure>
+                        <figure class="figure">
+                            <img
+                                src="assets/chouxi-stream.jpg"
+                                alt="The Chouxi stream at Shanmen running clear over a stony bed between banks of trees."
+                                width="1280"
+                                height="853"
+                                loading="lazy"
+                            />
+                            <figcaption>
+                                The Chouxi at Shanmen &mdash; shallow, clear, and in summer the
+                                town&rsquo;s swimming pool.
+                            </figcaption>
+                        </figure>
+                        <figure class="figure">
+                            <img
+                                src="assets/yongan-peach.jpg"
+                                alt="A grove of peach trees in flower at Yong'an, with a path running between the rows."
+                                width="1280"
+                                height="853"
+                                loading="lazy"
+                            />
+                            <figcaption>
+                                Yong&rsquo;an&rsquo;s peach grove, which flowers for about two weeks
+                                in March.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ HERITAGE ============ -->
+            <section class="stripe stripe--foam" id="heritage">
+                <div class="wrap">
+                    <p class="eyebrow">Kunyang &amp; Qiancang &mdash; the Old County Core</p>
+                    <h2 class="section__title">Brick, Stone, and One Uprising</h2>
+                    <p class="section__lede">
+                        Four sites stand within a short drive of the county seat. Open any card for
+                        the full entry.
+                    </p>
+
+                    <ul class="cards">
+                        <li>
+                            <button class="card" type="button" data-modal="modal-wenming">
+                                <img
+                                    src="assets/wenming-pagoda.jpg"
+                                    alt="Wenming Pagoda on Longshan hill in Kunyang, a seven-storey hexagonal brick pagoda seen from the south."
+                                    width="1280"
+                                    height="1920"
+                                    loading="lazy"
+                                />
+                                <span class="card__body">
+                                    <span class="eyebrow">Kunyang &middot; 1878&ndash;1884</span>
+                                    <span class="card__title">Wenming Pagoda</span>
+                                    <span class="card__hint">
+                                        Read entry
+                                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="card" type="button" data-modal="modal-baosheng">
+                                <img
+                                    src="assets/baosheng-pagodas.jpg"
+                                    alt="The twin pagodas at the site of Baosheng Temple in Qiancang, photographed from the south."
+                                    width="1280"
+                                    height="853"
+                                    loading="lazy"
+                                />
+                                <span class="card__body">
+                                    <span class="eyebrow">Qiancang &middot; Twin Towers</span>
+                                    <span class="card__title">Baosheng Temple Pagodas</span>
+                                    <span class="card__hint">
+                                        Read entry
+                                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="card" type="button" data-modal="modal-shake">
+                                <img
+                                    src="assets/shake-rock.jpg"
+                                    alt="Shake Rock on Fengshan hill at Qiancang, a large balanced boulder with carved inscriptions on its north face."
+                                    width="1280"
+                                    height="853"
+                                    loading="lazy"
+                                />
+                                <span class="card__body">
+                                    <span class="eyebrow">Qiancang &middot; Fengshan</span>
+                                    <span class="card__title">Shake Rock</span>
+                                    <span class="card__hint">
+                                        Read entry
+                                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="card" type="button" data-modal="modal-lingshun">
+                                <img
+                                    src="assets/lingshun-temple.jpg"
+                                    alt="The site of Lingshun Temple at Qiancang, a walled terrace on a hillside above the town."
+                                    width="1280"
+                                    height="853"
+                                    loading="lazy"
+                                />
+                                <span class="card__body">
+                                    <span class="eyebrow">Qiancang &middot; 1861</span>
+                                    <span class="card__title">Lingshun Temple Site</span>
+                                    <span class="card__hint">
+                                        Read entry
+                                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============ VIDEO ============ -->
+            <section class="stripe stripe--ink" id="bore">
+                <div class="wrap wrap--narrow">
+                    <p class="eyebrow">Twice Daily, Strongest in Autumn</p>
+                    <h2 class="section__title">The River Runs Backwards</h2>
+                    <p class="section__lede">
+                        The Aojiang is one of the few rivers in China that carries a tidal bore:
+                        a wall of seawater that pushes upstream against the current on a strong
+                        tide. Aojiang town and the port of Qiancang both grew on that tide, which
+                        set the working day for every boat on the river.
+                    </p>
+
+                    <figure class="video">
+                        <video class="video__player" controls preload="metadata" playsinline>
+                            <source src="assets/tidal-bore.webm" type="video/webm" />
+                            Your browser cannot play this clip.
+                        </video>
+                        <figcaption>
+                            A tidal bore on the Qiantang, upriver from Hangzhou &mdash; the same
+                            phenomenon that runs up the Aojiang, filmed on Zhejiang&rsquo;s other
+                            bore river. The clip has no speech. Video by Thomas Lombard,
+                            <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license noopener" target="_blank">CC&nbsp;BY-SA&nbsp;3.0</a>.
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- ============ VISIT ============ -->
+            <section class="stripe stripe--foam" id="visit">
+                <div class="wrap">
+                    <p class="eyebrow">Practical</p>
+                    <h2 class="section__title">If You Go</h2>
+
+                    <div class="cols cols--four">
+                        <article class="col">
+                            <span class="col__icon" aria-hidden="true"><i class="fa-solid fa-train"></i></span>
+                            <h3 class="col__title">Getting There</h3>
+                            <p>
+                                Pingyang station sits on the Wenzhou&ndash;Fuzhou line, about an
+                                hour from Wenzhou South. Boats to Nanji leave from Aojiang and cross
+                                roughly 55&nbsp;km of open water; sailings depend on the weather, so
+                                build a spare day into the plan.
+                            </p>
+                        </article>
+                        <article class="col">
+                            <span class="col__icon" aria-hidden="true"><i class="fa-solid fa-feather"></i></span>
+                            <h3 class="col__title">When to Go</h3>
+                            <p>
+                                Late April and early May bring black-tailed gulls to the outer
+                                islands and peach blossom to Yong&rsquo;an. Typhoon season runs from
+                                July to September and closes the ferries. Autumn gives the strongest
+                                bores and the clearest water.
+                            </p>
+                        </article>
+                        <article class="col">
+                            <span class="col__icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span>
+                            <h3 class="col__title">What to Drink</h3>
+                            <p>
+                                Pingyang Huangtang is a yellow tea, made here and in the
+                                neighbouring counties for more than two centuries. Look for the
+                                leaf the growers describe as white-hearted and yellow-leafed; it
+                                brews thinner and sweeter than a green.
+                            </p>
+                        </article>
+                        <article class="col">
+                            <span class="col__icon" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></span>
+                            <h3 class="col__title">Who Came From Here</h3>
+                            <p>
+                                Su Buqing (1902&ndash;2003) was born at Daixi in Tengjiao, took his
+                                doctorate at Tohoku in 1931, founded China&rsquo;s school of
+                                differential geometry, led Fudan University from 1978 and started
+                                the <cite>Chinese Annals of Mathematics</cite> in 1980.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="footer">
+            <div class="wrap">
+                <div class="footer__top">
+                    <div class="footer__brand">
+                        <span class="nav__mark" aria-hidden="true"><i class="fa-solid fa-water"></i></span>
+                        <p class="footer__tag">
+                            Pingyang County, Wenzhou, Zhejiang &mdash; a single page about
+                            1,042&nbsp;square kilometres.
+                        </p>
+                    </div>
+                    <div class="social">
+                        <p class="eyebrow">Share This Page</p>
+                        <ul class="social__list">
+                            <li>
+                                <a class="social__link" data-share="weibo" href="https://weibo.com" target="_blank" rel="noopener" aria-label="Share on Weibo">
+                                    <i class="fa-brands fa-weibo" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social__link" data-share="x" href="https://x.com" target="_blank" rel="noopener" aria-label="Share on X">
+                                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social__link" data-share="facebook" href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Share on Facebook">
+                                    <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="social__link" data-share="linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer__credits">
+                    <h2 class="footer__heading">Sources &amp; Image Credits</h2>
+                    <p>
+                        Text compiled from the Chinese and English Wikipedia entries for Pingyang
+                        County, the Nanji Islands, Wenming Pagoda, the Golden Coin Society and
+                        Su&nbsp;Buqing. Photographs from Wikimedia Commons, reused under the
+                        licences below; the 1946 county map is public domain.
+                    </p>
+                    <ul class="credit-list">
+                        <li>Nanji beaches and Mei-ling House &mdash; <span translate="no">猫猫的日记本</span> and ZeroSimple, CC&nbsp;BY-SA&nbsp;4.0</li>
+                        <li>Pagodas, Shake Rock, Lingshun Temple site &mdash; <span translate="no">猫猫的日记本</span>, CC&nbsp;BY-SA&nbsp;4.0</li>
+                        <li>Shanmen, Chouxi and Yong&rsquo;an &mdash; <span translate="no">江上清风1961</span>, CC&nbsp;BY&nbsp;3.0</li>
+                        <li>Tidal bore footage &mdash; Thomas Lombard, CC&nbsp;BY-SA&nbsp;3.0</li>
+                    </ul>
+                    <p class="footer__fine">
+                        Built for CS&nbsp;409 MP&nbsp;1 with hand-written HTML, SCSS and
+                        JavaScript &mdash; no frameworks. <span id="year"></span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ============ MODALS ============ -->
+        <dialog class="modal" id="modal-wenming" aria-labelledby="modal-wenming-title">
+            <article class="modal__inner">
+                <button class="modal__close" type="button" aria-label="Close dialog">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+                <img
+                    class="modal__img"
+                    src="assets/wenming-pagoda.jpg"
+                    alt="Wenming Pagoda rising above trees on Longshan hill, its seven storeys narrowing towards the top."
+                    width="1280"
+                    height="1920"
+                    loading="lazy"
+                />
+                <div class="modal__body">
+                    <p class="eyebrow">Kunyang &middot; Longshan &middot; 1878&ndash;1884</p>
+                    <h3 class="modal__title" id="modal-wenming-title">Wenming Pagoda</h3>
+                    <p>
+                        From the Song to the Ming, Pingyang produced enough scholars to be called
+                        the little Zou-Lu of the southeast. By the late Qing that run had dried up,
+                        and local gentry led by Chen Jizhong asked the magistrate Tang Zhaoxi for a
+                        pagoda to restore the county&rsquo;s literary fortune. Work began in 1878
+                        and finished in the third month of 1884.
+                    </p>
+                    <p>
+                        Because each storey steps inward, the tower tapers like an upright brush,
+                        and locals called it the Writing-brush Pagoda long before the official name
+                        stuck. The wooden stair inside burned during the Republican period and was
+                        never replaced.
+                    </p>
+                    <dl class="spec">
+                        <div class="spec__row"><dt>Height</dt><dd>31.5&nbsp;m</dd></div>
+                        <div class="spec__row"><dt>Plan</dt><dd>Hexagonal, seven storeys</dd></div>
+                        <div class="spec__row"><dt>Construction</dt><dd>Brick cut to imitate timber, dragon-head finials at the eaves corners</dd></div>
+                        <div class="spec__row"><dt>Protection</dt><dd>County site 1986; Zhejiang provincial site since 16&nbsp;March&nbsp;2005</dd></div>
+                    </dl>
+                </div>
+            </article>
+        </dialog>
+
+        <dialog class="modal" id="modal-baosheng" aria-labelledby="modal-baosheng-title">
+            <article class="modal__inner">
+                <button class="modal__close" type="button" aria-label="Close dialog">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+                <img
+                    class="modal__img"
+                    src="assets/baosheng-pagodas.jpg"
+                    alt="Two stone-and-brick pagodas standing close together at the former Baosheng Temple, with hills behind."
+                    width="1280"
+                    height="853"
+                    loading="lazy"
+                />
+                <div class="modal__body">
+                    <p class="eyebrow">Qiancang &middot; South Face</p>
+                    <h3 class="modal__title" id="modal-baosheng-title">Baosheng Temple Pagodas</h3>
+                    <p>
+                        The two pagodas stand at the old temple site above Qiancang, a river town on
+                        the Aojiang whose name &mdash; money granary &mdash; records what it once
+                        stored and shipped. The temple itself is gone; the pair of towers, and the
+                        carved rock faces on the hill behind them, are what remains of the town&rsquo;s
+                        religious quarter.
+                    </p>
+                    <p>
+                        Qiancang sat on the road and the river at once, which made it the natural
+                        gathering point for anything moving between the coast and the upper valleys
+                        &mdash; pilgrims, salt, and in 1861, rebels.
+                    </p>
+                </div>
+            </article>
+        </dialog>
+
+        <dialog class="modal" id="modal-shake" aria-labelledby="modal-shake-title">
+            <article class="modal__inner">
+                <button class="modal__close" type="button" aria-label="Close dialog">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+                <img
+                    class="modal__img"
+                    src="assets/shake-rock.jpg"
+                    alt="A large balanced boulder on a hillside at Qiancang, its flat north face carrying carved characters."
+                    width="1280"
+                    height="853"
+                    loading="lazy"
+                />
+                <div class="modal__body">
+                    <p class="eyebrow">Qiancang &middot; Fengshan</p>
+                    <h3 class="modal__title" id="modal-shake-title">Shake Rock</h3>
+                    <p>
+                        A boulder balanced on Fengshan hill so finely that it rocks under a push
+                        and settles back. Its north face carries an inscription, one of the group
+                        known collectively as the Qiancang cliff carvings &mdash; the local habit
+                        of signing the landscape rather than a wall.
+                    </p>
+                    <p>
+                        The carvings are read from the path, which climbs from the town through
+                        the temple terraces towards the twin pagodas.
+                    </p>
+                </div>
+            </article>
+        </dialog>
+
+        <dialog class="modal" id="modal-lingshun" aria-labelledby="modal-lingshun-title">
+            <article class="modal__inner">
+                <button class="modal__close" type="button" aria-label="Close dialog">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+                <img
+                    class="modal__img"
+                    src="assets/lingshun-temple.jpg"
+                    alt="The terraced site of Lingshun Temple at Qiancang, stone foundations and low walls among trees."
+                    width="1280"
+                    height="853"
+                    loading="lazy"
+                />
+                <div class="modal__body">
+                    <p class="eyebrow">Qiancang &middot; 1861&ndash;1862</p>
+                    <h3 class="modal__title" id="modal-lingshun-title">Lingshun Temple Site</h3>
+                    <p>
+                        Also called North Hill Temple, this terrace is where the Golden Coin
+                        Society gathered before the rising of 1861. Wenzhou had taken a decade of
+                        typhoons, floods, plague and famine; the county granary at Pingyang had
+                        fallen from 8,634 piculs of grain in 1851 to 45 by 1859, while the
+                        government kept levying contributions to pay for the war against the
+                        Taiping.
+                    </p>
+                    <p>
+                        What began as a quarrel between two local men became a rebellion. The
+                        society took Fuding and Pingyang, attacked Wenzhou and besieged
+                        Rui&rsquo;an before imperial troops put it down the following year.
+                    </p>
+                </div>
+            </article>
+        </dialog>
     </body>
 </html>
