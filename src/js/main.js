@@ -1,10 +1,3 @@
-/*
- * Pingyang County — page behaviour.
- * Plain ES6, no libraries: navigation state, carousel, modals, share links.
- */
-
-/* ---------- Navigation: resize on scroll + reading-position indicator ---- */
-
 const nav = document.getElementById('nav');
 const navLinks = Array.from(document.querySelectorAll('.nav__link'));
 const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href')));
@@ -12,7 +5,6 @@ const sections = navLinks.map((link) => document.querySelector(link.getAttribute
 function syncNav() {
     nav.classList.toggle('nav--compact', window.scrollY > 32);
 
-    /* The section that sits directly under the bar is the one being read. */
     const readingLine = window.scrollY + nav.offsetHeight + 1;
     const doc = document.documentElement;
     const atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 2;
@@ -52,8 +44,6 @@ window.addEventListener(
 window.addEventListener('resize', syncNav);
 syncNav();
 
-/* ---------- Carousel ----------------------------------------------------- */
-
 const carousel = document.getElementById('carousel');
 const track = document.getElementById('carousel-track');
 const slides = Array.from(track.children);
@@ -76,7 +66,6 @@ function showSlide(next) {
     track.style.transform = `translateX(-${slideIndex * 100}%)`;
 
     slides.forEach((slide, i) => {
-        /* Keep off-screen slides out of the tab order and the reading order. */
         slide.toggleAttribute('inert', i !== slideIndex);
     });
     dots.forEach((dot, i) => dot.classList.toggle('is-active', i === slideIndex));
@@ -92,8 +81,6 @@ carousel.addEventListener('keydown', (event) => {
 
 showSlide(0);
 
-/* ---------- Modals (native <dialog>) ------------------------------------- */
-
 document.querySelectorAll('[data-modal]').forEach((trigger) => {
     trigger.addEventListener('click', () => {
         const modal = document.getElementById(trigger.dataset.modal);
@@ -104,12 +91,9 @@ document.querySelectorAll('[data-modal]').forEach((trigger) => {
 document.querySelectorAll('.modal').forEach((modal) => {
     modal.querySelector('.modal__close').addEventListener('click', () => modal.close());
     modal.addEventListener('click', (event) => {
-        /* A click that lands on the dialog itself is a click on the backdrop. */
         if (event.target === modal) modal.close();
     });
 });
-
-/* ---------- Footer: share links and year --------------------------------- */
 
 const pageUrl = encodeURIComponent(window.location.href);
 const pageTitle = encodeURIComponent(document.title);

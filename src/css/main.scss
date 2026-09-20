@@ -1,14 +1,6 @@
 @use "sass:map";
 @use "sass:color";
 
-/* =========================================================================
-   Pingyang County — stylesheet
-   Sass features in use: modules, maps, @each, mixins, nesting, colour
-   functions; CSS custom properties carry the runtime theme.
-   ========================================================================= */
-
-/* ---------- 1. Design tokens -------------------------------------------- */
-
 $palette: (
     ink: #0b2a31,
     deep: #123f47,
@@ -74,7 +66,6 @@ $ease: cubic-bezier(0.4, 0, 0.2, 1);
     --gutter: clamp(1.25rem, 4vw, 2.5rem);
 }
 
-/* Dark scheme: only the tokens change. */
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: #071b20;
@@ -89,8 +80,6 @@ $ease: cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-/* ---------- 2. Base ----------------------------------------------------- */
-
 *,
 *::before,
 *::after {
@@ -99,7 +88,7 @@ $ease: cubic-bezier(0.4, 0, 0.2, 1);
 
 html {
     scroll-behavior: smooth;
-    color-scheme: light dark; /* native scrollbars and controls follow the theme */
+    color-scheme: light dark;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -169,8 +158,6 @@ cite {
     }
 }
 
-/* ---------- 3. Layout primitives ---------------------------------------- */
-
 .wrap {
     width: min(71rem, 100%);
     margin-inline: auto;
@@ -194,7 +181,6 @@ cite {
         background: var(--bg-alt);
     }
 
-    /* Inverted stripe: redefine the tokens, not the components. */
     &--ink {
         background: var(--c-ink);
         --text: #e7efed;
@@ -233,8 +219,6 @@ cite {
     color: var(--text-dim);
     font-size: 1.1em;
 }
-
-/* ---------- 4. Navigation bar ------------------------------------------- */
 
 .nav {
     position: fixed;
@@ -351,12 +335,10 @@ cite {
     }
 }
 
-/* ---------- 5. Hero ------------------------------------------------------ */
-
 .hero {
     min-height: clamp(34rem, 88vh, 52rem);
     display: grid;
-    place-items: center; /* stays centred at any outer size */
+    place-items: center;
     padding-block: calc(var(--nav-h) + 2rem) 4rem;
     text-align: center;
     color: #f3f8f6;
@@ -457,8 +439,6 @@ cite {
     }
 }
 
-/* ---------- 6. Stats, columns, figures ---------------------------------- */
-
 .stats {
     list-style: none;
     margin: 0 0 clamp(3rem, 6vw, 4.5rem);
@@ -557,8 +537,6 @@ cite {
     }
 }
 
-/* ---------- 7. Split layout + carousel ---------------------------------- */
-
 .split {
     display: grid;
     gap: clamp(2rem, 4vw, 3.25rem);
@@ -616,7 +594,7 @@ cite {
 
     &__arrow {
         position: absolute;
-        inset-block-start: 50%; /* vertically centred against the frame */
+        inset-block-start: 50%;
         translate: 0 -50%;
         display: grid;
         place-items: center;
@@ -699,17 +677,14 @@ cite {
     }
 }
 
-/* ---------- 8. Fixed background stripe ---------------------------------- */
-
 .parallax {
     position: relative;
     display: grid;
-    place-items: center; /* vertical centring survives any height change */
+    place-items: center;
     min-height: clamp(26rem, 62vh, 38rem);
     padding-block: clamp(3rem, 7vw, 5rem);
     background: url("../assets/shanmen-hills.jpg") center / cover no-repeat fixed;
 
-    /* Fixed attachment misbehaves on touch devices; fall back cleanly. */
     @media (hover: none) {
         background-attachment: scroll;
     }
@@ -737,8 +712,6 @@ cite {
         color: var(--c-tea-soft);
     }
 }
-
-/* ---------- 9. Cards and modals ----------------------------------------- */
 
 .cards {
     list-style: none;
@@ -887,8 +860,6 @@ cite {
     }
 }
 
-/* ---------- 10. Video ---------------------------------------------------- */
-
 .video {
     margin: 0;
 
@@ -908,8 +879,6 @@ cite {
         text-align: center;
     }
 }
-
-/* ---------- 11. Footer ---------------------------------------------------- */
 
 .footer {
     background: var(--c-deep);
@@ -1010,8 +979,6 @@ cite {
         }
     }
 }
-
-/* ---------- 12. Animation ------------------------------------------------ */
 
 @keyframes rise {
     from {
