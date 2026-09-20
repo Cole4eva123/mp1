@@ -1,1 +1,1060 @@
-/* Your SCSS here. */
+@use "sass:map";
+@use "sass:color";
+
+/* =========================================================================
+   Pingyang County — stylesheet
+   Sass features in use: modules, maps, @each, mixins, nesting, colour
+   functions; CSS custom properties carry the runtime theme.
+   ========================================================================= */
+
+/* ---------- 1. Design tokens -------------------------------------------- */
+
+$palette: (
+    ink: #0b2a31,
+    deep: #123f47,
+    sea: #2e7f86,
+    tea: #a4670c,
+    tea-soft: #d79a2b,
+    foam: #e9efed,
+    paper: #fbfcfb,
+    slate: #5a6e6e,
+);
+
+$breakpoints: (
+    sm: 40rem,
+    md: 52rem,
+    lg: 68rem,
+);
+
+$font-display: "Spectral", Georgia, "Times New Roman", serif;
+$font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-label: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+
+$radius: 3px;
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+@mixin up($name) {
+    @media (min-width: map.get($breakpoints, $name)) {
+        @content;
+    }
+}
+
+@mixin focus-ring($offset: 3px) {
+    &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: $offset;
+    }
+}
+
+@mixin label-type {
+    font-family: $font-label;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+:root {
+    @each $name, $value in $palette {
+        --c-#{$name}: #{$value};
+    }
+
+    --bg: var(--c-paper);
+    --bg-alt: var(--c-foam);
+    --surface: #ffffff;
+    --text: var(--c-ink);
+    --text-dim: var(--c-slate);
+    --line: #{rgba(map.get($palette, ink), 0.16)};
+    --accent: var(--c-tea);
+    --link: #{color.adjust(map.get($palette, sea), $lightness: -12%)};
+    --shadow: #{rgba(map.get($palette, ink), 0.14)};
+
+    --nav-h: 5.25rem;
+    --nav-h-min: 3.5rem;
+    --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* Dark scheme: only the tokens change. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #071b20;
+        --bg-alt: #0b262c;
+        --surface: #0f3038;
+        --text: #dfe9e6;
+        --text-dim: #9db1ae;
+        --line: #{rgba(#dfe9e6, 0.18)};
+        --accent: var(--c-tea-soft);
+        --link: #6fb9bf;
+        --shadow: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ---------- 2. Base ----------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: light dark; /* native scrollbars and controls follow the theme */
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: $font-body;
+    font-size: clamp(1rem, 0.96rem + 0.2vw, 1.075rem);
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    margin: 0 0 1.1em;
+    text-wrap: pretty;
+}
+
+a {
+    color: var(--link);
+    touch-action: manipulation;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    @include focus-ring;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    touch-action: manipulation;
+    @include focus-ring;
+}
+
+h1,
+h2,
+h3 {
+    font-family: $font-display;
+    font-weight: 700;
+    line-height: 1.1;
+    text-wrap: balance;
+    margin: 0 0 0.5em;
+}
+
+cite {
+    font-style: italic;
+}
+
+.skip {
+    position: absolute;
+    inset-block-start: -100%;
+    inset-inline-start: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: var(--c-ink);
+    color: #fff;
+    text-decoration: none;
+
+    &:focus {
+        inset-block-start: 1rem;
+    }
+}
+
+/* ---------- 3. Layout primitives ---------------------------------------- */
+
+.wrap {
+    width: min(71rem, 100%);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+
+    &--narrow {
+        width: min(52rem, 100%);
+    }
+
+    &--tight {
+        padding-block-start: clamp(3rem, 6vw, 5rem);
+    }
+}
+
+.stripe {
+    position: relative;
+    padding-block: clamp(3.75rem, 8vw, 6.5rem);
+    scroll-margin-top: var(--nav-h-min);
+
+    &--foam {
+        background: var(--bg-alt);
+    }
+
+    /* Inverted stripe: redefine the tokens, not the components. */
+    &--ink {
+        background: var(--c-ink);
+        --text: #e7efed;
+        --text-dim: #a5bebb;
+        --surface: #10343c;
+        --line: #{rgba(#e7efed, 0.22)};
+        --accent: var(--c-tea-soft);
+        --link: #7cc3c8;
+        --shadow: rgba(0, 0, 0, 0.45);
+        color: var(--text);
+    }
+}
+
+.eyebrow {
+    @include label-type;
+    color: var(--accent);
+    margin: 0 0 0.85rem;
+    text-align: center;
+}
+
+.section__title {
+    font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem);
+    text-align: center;
+    margin-bottom: 0.6em;
+
+    &--light {
+        color: #f3f8f6;
+    }
+}
+
+.section__lede {
+    max-width: 44rem;
+    margin-inline: auto;
+    margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 1.1em;
+}
+
+/* ---------- 4. Navigation bar ------------------------------------------- */
+
+.nav {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 60;
+    height: var(--nav-h);
+    background: #{rgba(map.get($palette, ink), 0.88)};
+    backdrop-filter: blur(10px);
+    border-block-end: 1px solid #{rgba(#ffffff, 0.12)};
+    transition: height 0.3s $ease, background-color 0.3s $ease;
+
+    &__inner {
+        height: 100%;
+        width: min(71rem, 100%);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        color: #f3f8f6;
+        text-decoration: none;
+        flex: 0 0 auto;
+    }
+
+    &__mark {
+        display: grid;
+        place-items: center;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid #{rgba(#ffffff, 0.35)};
+        border-radius: 50%;
+        color: var(--c-tea-soft);
+        font-size: 0.85rem;
+    }
+
+    &__word {
+        font-family: $font-display;
+        font-weight: 600;
+        font-size: 1.5rem;
+        letter-spacing: 0.01em;
+        transition: font-size 0.3s $ease;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: clamp(0.85rem, 2.2vw, 2rem);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__link {
+        position: relative;
+        display: block;
+        padding-block: 0.4rem;
+        color: #{rgba(#f3f8f6, 0.78)};
+        text-decoration: none;
+        white-space: nowrap;
+        @include label-type;
+        font-size: 0.95rem;
+        transition: color 0.2s $ease, font-size 0.3s $ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset-inline: 0;
+            inset-block-end: 0;
+            height: 2px;
+            background: var(--c-tea-soft);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s $ease;
+        }
+
+        &:hover {
+            color: #ffffff;
+        }
+
+        &.is-active {
+            color: #ffffff;
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    &--compact {
+        height: var(--nav-h-min);
+        background: #{rgba(map.get($palette, ink), 0.96)};
+
+        .nav__word {
+            font-size: 1.15rem;
+        }
+
+        .nav__link {
+            font-size: 0.82rem;
+        }
+    }
+}
+
+/* ---------- 5. Hero ------------------------------------------------------ */
+
+.hero {
+    min-height: clamp(34rem, 88vh, 52rem);
+    display: grid;
+    place-items: center; /* stays centred at any outer size */
+    padding-block: calc(var(--nav-h) + 2rem) 4rem;
+    text-align: center;
+    color: #f3f8f6;
+    background: url("../assets/nanji-dashaao.jpg") center / cover no-repeat;
+
+    &__scrim {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            #{rgba(map.get($palette, ink), 0.72)} 0%,
+            #{rgba(map.get($palette, ink), 0.38)} 45%,
+            #{rgba(map.get($palette, ink), 0.85)} 100%
+        );
+    }
+
+    &__body {
+        position: relative;
+        width: min(48rem, 100%);
+        padding-inline: var(--gutter);
+    }
+
+    &__eyebrow {
+        color: var(--c-tea-soft);
+        animation: rise 0.9s 0.05s both;
+    }
+
+    &__title {
+        font-size: clamp(3.5rem, 13vw, 7.5rem);
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.3em;
+        animation: rise 0.9s 0.15s both;
+    }
+
+    &__lede {
+        font-size: clamp(1.05rem, 1rem + 0.45vw, 1.3rem);
+        color: #{rgba(#f3f8f6, 0.9)};
+        margin-inline: auto;
+        max-width: 38rem;
+        animation: rise 0.9s 0.28s both;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.85rem;
+        margin-block-start: 2rem;
+        animation: rise 0.9s 0.4s both;
+    }
+
+    &__cue {
+        position: absolute;
+        inset-block-end: 1.75rem;
+        inset-inline-start: 50%;
+        translate: -50% 0;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 1px solid #{rgba(#f3f8f6, 0.4)};
+        border-radius: 50%;
+        color: #f3f8f6;
+        animation: bob 2.6s ease-in-out infinite;
+        @include focus-ring;
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid transparent;
+    border-radius: $radius;
+    text-decoration: none;
+    @include label-type;
+    letter-spacing: 0.12em;
+    transition: background-color 0.25s $ease, color 0.25s $ease, border-color 0.25s $ease;
+    @include focus-ring;
+
+    &--solid {
+        background: var(--c-tea-soft);
+        color: #14232a;
+
+        &:hover {
+            background: #{color.adjust(map.get($palette, tea-soft), $lightness: 8%)};
+        }
+    }
+
+    &--ghost {
+        border-color: #{rgba(#f3f8f6, 0.5)};
+        color: #f3f8f6;
+
+        &:hover {
+            background: #{rgba(#f3f8f6, 0.14)};
+            border-color: #f3f8f6;
+        }
+    }
+}
+
+/* ---------- 6. Stats, columns, figures ---------------------------------- */
+
+.stats {
+    list-style: none;
+    margin: 0 0 clamp(3rem, 6vw, 4.5rem);
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    border-block: 1px solid var(--line);
+    padding-block: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.stat {
+    text-align: center;
+
+    &__num {
+        display: block;
+        font-family: $font-display;
+        font-weight: 600;
+        font-size: clamp(2.1rem, 1.4rem + 2.2vw, 3.1rem);
+        line-height: 1;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+    }
+
+    &__unit {
+        display: block;
+        margin-block-start: 0.5rem;
+        @include label-type;
+        font-size: 0.78rem;
+        color: var(--text-dim);
+    }
+}
+
+.cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: clamp(1.75rem, 4vw, 3rem);
+    text-align: left;
+
+    &--four {
+        grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+    }
+
+    &--gallery {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    }
+}
+
+.col {
+    min-width: 0;
+
+    &__title {
+        font-size: 1.3rem;
+        margin-bottom: 0.45em;
+        padding-block-end: 0.5rem;
+        border-block-end: 1px solid var(--line);
+    }
+
+    &__icon {
+        display: grid;
+        place-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0.9rem;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        color: var(--accent);
+    }
+
+    p {
+        color: var(--text-dim);
+    }
+}
+
+.figure {
+    margin: 0;
+
+    img {
+        display: block;
+        width: 100%;
+        border-radius: $radius;
+    }
+
+    figcaption {
+        margin-block-start: 0.75rem;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+    }
+
+    &--map {
+        margin-block-start: clamp(3rem, 6vw, 4.5rem);
+        max-width: 24rem;
+        margin-inline: auto;
+        text-align: center;
+    }
+}
+
+/* ---------- 7. Split layout + carousel ---------------------------------- */
+
+.split {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.25rem);
+    align-items: center;
+
+    @include up(md) {
+        grid-template-columns: 1.15fr 1fr;
+    }
+
+    &__text {
+        min-width: 0;
+    }
+}
+
+.carousel {
+    position: relative;
+
+    &__viewport {
+        overflow: hidden;
+        border-radius: $radius;
+        background: #{rgba(#000, 0.25)};
+    }
+
+    &__track {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        transition: transform 0.55s $ease;
+    }
+
+    &__slide {
+        position: relative;
+        flex: 0 0 100%;
+        min-width: 0;
+
+        img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        margin: 0;
+        padding: 2.75rem 1.1rem 0.9rem;
+        background: linear-gradient(transparent, #{rgba(map.get($palette, ink), 0.9)});
+        color: #eef5f3;
+        font-size: 0.92rem;
+    }
+
+    &__arrow {
+        position: absolute;
+        inset-block-start: 50%; /* vertically centred against the frame */
+        translate: 0 -50%;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 1px solid #{rgba(#f3f8f6, 0.45)};
+        border-radius: 50%;
+        background: #{rgba(map.get($palette, ink), 0.6)};
+        color: #f3f8f6;
+        cursor: pointer;
+        transition: background-color 0.25s $ease, border-color 0.25s $ease;
+
+        &:hover {
+            background: #{rgba(map.get($palette, ink), 0.92)};
+            border-color: #f3f8f6;
+        }
+
+        &--prev {
+            inset-inline-start: 0.75rem;
+        }
+
+        &--next {
+            inset-inline-end: 0.75rem;
+        }
+    }
+
+    &__dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-block-start: 1rem;
+    }
+
+    &__dot {
+        width: 2.25rem;
+        height: 4px;
+        padding: 0;
+        border: 0;
+        border-radius: 2px;
+        background: var(--line);
+        cursor: pointer;
+        transition: background-color 0.25s $ease;
+
+        &.is-active {
+            background: var(--accent);
+        }
+    }
+
+    &__status {
+        margin: 0.6rem 0 0;
+        text-align: center;
+        @include label-type;
+        font-size: 0.75rem;
+        color: var(--text-dim);
+    }
+}
+
+.spec {
+    margin: 1.5rem 0 0;
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 1rem;
+        padding-block: 0.7rem;
+        border-block-start: 1px solid var(--line);
+    }
+
+    dt {
+        flex: 0 0 9rem;
+        @include label-type;
+        font-size: 0.78rem;
+        color: var(--text-dim);
+    }
+
+    dd {
+        flex: 1 1 12rem;
+        margin: 0;
+        min-width: 0;
+    }
+}
+
+/* ---------- 8. Fixed background stripe ---------------------------------- */
+
+.parallax {
+    position: relative;
+    display: grid;
+    place-items: center; /* vertical centring survives any height change */
+    min-height: clamp(26rem, 62vh, 38rem);
+    padding-block: clamp(3rem, 7vw, 5rem);
+    background: url("../assets/shanmen-hills.jpg") center / cover no-repeat fixed;
+
+    /* Fixed attachment misbehaves on touch devices; fall back cleanly. */
+    @media (hover: none) {
+        background-attachment: scroll;
+    }
+
+    &__scrim {
+        position: absolute;
+        inset: 0;
+        background: #{rgba(map.get($palette, ink), 0.68)};
+    }
+
+    &__panel {
+        position: relative;
+        width: min(44rem, 100%);
+        padding-inline: var(--gutter);
+        text-align: center;
+        color: #f3f8f6;
+    }
+
+    &__text {
+        color: #{rgba(#f3f8f6, 0.92)};
+        margin: 0;
+    }
+
+    .eyebrow {
+        color: var(--c-tea-soft);
+    }
+}
+
+/* ---------- 9. Cards and modals ----------------------------------------- */
+
+.cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: $radius;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s $ease, box-shadow 0.25s $ease;
+
+    img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1.1rem 1.2rem 1.35rem;
+
+        .eyebrow {
+            text-align: left;
+            margin: 0;
+            font-size: 0.72rem;
+        }
+    }
+
+    &__title {
+        font-family: $font-display;
+        font-weight: 600;
+        font-size: 1.22rem;
+        line-height: 1.2;
+    }
+
+    &__hint {
+        margin-block-start: 0.35rem;
+        @include label-type;
+        font-size: 0.75rem;
+        color: var(--text-dim);
+
+        i {
+            transition: translate 0.25s $ease;
+        }
+    }
+
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px var(--shadow);
+
+        .card__hint i {
+            translate: 4px 0;
+        }
+    }
+}
+
+.modal {
+    width: min(52rem, 92vw);
+    max-height: 88vh;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: $radius;
+    background: var(--surface);
+    color: var(--text);
+    overscroll-behavior: contain;
+
+    &::backdrop {
+        background: #{rgba(#04161b, 0.72)};
+    }
+
+    &[open] {
+        animation: modal-in 0.3s $ease both;
+    }
+
+    &__inner {
+        display: grid;
+        max-height: 88vh;
+        overflow-y: auto;
+
+        @include up(md) {
+            grid-template-columns: 0.85fr 1.15fr;
+        }
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 20rem;
+        object-fit: cover;
+
+        @include up(md) {
+            max-height: none;
+        }
+    }
+
+    &__body {
+        padding: clamp(1.5rem, 3vw, 2.25rem);
+        min-width: 0;
+
+        .eyebrow {
+            text-align: left;
+        }
+    }
+
+    &__title {
+        font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+    }
+
+    &__close {
+        position: absolute;
+        inset-block-start: 0.65rem;
+        inset-inline-end: 0.65rem;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        border: 1px solid #{rgba(#f3f8f6, 0.4)};
+        border-radius: 50%;
+        background: #{rgba(map.get($palette, ink), 0.72)};
+        color: #f3f8f6;
+        cursor: pointer;
+        transition: background-color 0.2s $ease;
+
+        &:hover {
+            background: map.get($palette, ink);
+        }
+    }
+}
+
+/* ---------- 10. Video ---------------------------------------------------- */
+
+.video {
+    margin: 0;
+
+    &__player {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        max-height: 70vh;
+        border-radius: $radius;
+        background: #000;
+    }
+
+    figcaption {
+        margin-block-start: 0.9rem;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        text-align: center;
+    }
+}
+
+/* ---------- 11. Footer ---------------------------------------------------- */
+
+.footer {
+    background: var(--c-deep);
+    color: #dfeae7;
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    --text-dim: #{rgba(#dfeae7, 0.72)};
+    --line: #{rgba(#dfeae7, 0.22)};
+    --accent: var(--c-tea-soft);
+    --link: #8fcdd2;
+
+    &__top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        padding-block-end: 2rem;
+        border-block-end: 1px solid var(--line);
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        max-width: 28rem;
+    }
+
+    &__tag {
+        margin: 0;
+        font-family: $font-display;
+        font-size: 1.05rem;
+    }
+
+    &__credits {
+        padding-block-start: 2rem;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        max-width: 46rem;
+    }
+
+    &__heading {
+        @include label-type;
+        font-family: $font-label;
+        font-size: 0.82rem;
+        color: #dfeae7;
+    }
+
+    &__fine {
+        margin-block-start: 1.25rem;
+        font-size: 0.82rem;
+    }
+
+    .nav__mark {
+        width: 2.5rem;
+        height: 2.5rem;
+        flex: 0 0 auto;
+    }
+
+    .eyebrow {
+        text-align: right;
+    }
+}
+
+.credit-list {
+    margin: 0 0 1rem;
+    padding-inline-start: 1.1rem;
+
+    li {
+        margin-block-end: 0.3rem;
+    }
+}
+
+.social {
+    &__list {
+        display: flex;
+        gap: 0.6rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-end;
+    }
+
+    &__link {
+        display: grid;
+        place-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: #dfeae7;
+        text-decoration: none;
+        transition: background-color 0.25s $ease, color 0.25s $ease, border-color 0.25s $ease;
+
+        &:hover {
+            background: var(--c-tea-soft);
+            border-color: var(--c-tea-soft);
+            color: #14232a;
+        }
+    }
+}
+
+/* ---------- 12. Animation ------------------------------------------------ */
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes bob {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0.4rem);
+    }
+}
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(1.25rem) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
